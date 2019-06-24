@@ -1,5 +1,3 @@
-# DeepMove
-application of fish classification using hybrid HOGY alogorithm
 
  # GMM Output
 Run "opencv_gmm.py" to save gmm frames
