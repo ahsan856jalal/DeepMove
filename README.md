@@ -1,4 +1,4 @@
-#Pre-requisites
+# Pre-requisites
 Python packages: opencv, natsort, math, ctypes, os, glob,sys, numpy, pylab
 YOLO darkent installed using guidelines from "https://github.com/AlexeyAB/darknet" or "https://github.com/pjreddie/darknet"
  # GMM Output
