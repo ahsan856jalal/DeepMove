@@ -1,10 +1,12 @@
-
+#Pre-requisites
+Python packages: opencv, natsort, math, ctypes, os, glob,sys, numpy, pylab
+YOLO darkent installed using guidelines from "https://github.com/AlexeyAB/darknet" or "https://github.com/pjreddie/darknet"
  # GMM Output
 Run "opencv_gmm.py" to save gmm frames
 # Optical Output
 Run "opencv_opencv.py" to save optical frames from the given video
 # YOLO Output
-Tun " opencv_yolo.py" to save YOLO detections on the provided video
+Run " opencv_yolo.py" to save YOLO detections on the provided video
 # Combining Optical and GMM instances
 Run " comb_gmm_optical_images.py" to combing gmm and optical flow instances and do fish detection and classification on all frames
 # Preferential Combination
