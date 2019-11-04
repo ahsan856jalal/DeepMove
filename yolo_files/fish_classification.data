@@ -1,0 +1,8 @@
+classes=16
+train  =/home/ahsanjalal/Fishclef/Datasets/Training_dataset/training_70_30_split_data/split_70/train_with_bkg.list
+valid  =/home/ahsanjalal/Fishclef/Datasets/Test_dataset/val_img_patches.list
+labels = /home/ahsanjalal/darknet_pj/cfg/fishclef.list
+backup = resnet_50_split_70
+top=2
+
+

@@ -1,0 +1,9 @@
+classes= 15
+train  = cfg/train_list.txt
+//train  = /home/ahsanjalal/darknet/cfg/fishclef_test_filenames.txt
+valid  = cfg/val_list.txt
+
+names = /home/ahsanjalal/darknet_pj/cfg/fishclef.names 
+backup=yolov3_on_70_split
+
+
