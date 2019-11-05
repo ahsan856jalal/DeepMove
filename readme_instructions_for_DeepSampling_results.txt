@@ -5,7 +5,7 @@ In the main directory, call
 	  cd bgslibrary
 	  pip3 or pip install pybgs
 	  copy making_gmm_detections_bgs_pawcs.py from DeepSampling repo to bgslibrary repo
-	  python or python3 making_gmm_detections_bgs_pawcs.py # will make sot_files
+	  python or python3 sot.py # will make sot_files
 	* In the Deepsampling folder:
 	  python making_gmm_detections.py # to make GMM files
 	* for yolo files
