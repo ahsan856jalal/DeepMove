@@ -30,7 +30,7 @@ At the end, a demo will run which will show you original frames vs the processed
 # Visualize the results
 Run " show_images.py" by specifying the input folder to see all annotated data from the respective algorithm
 
-##### Step by Step Results ###############
+# Step by Step Results #
 Run files in the following sequence
 opencv_gmm.py, opencv_optical.py, opencv_yolo.py, comb_gmm_optical_images.py, preferential_combination.py
 
@@ -40,7 +40,7 @@ Run these files to get the final result
 overall_gmm_optical_classification.py, opencv_yolo.py and at the end preferential_combination.py to compute results
 
 
-#####  Steps to reproduce paper results ########
+# Steps to reproduce paper results 
 
 1: Clone the directory 
 
@@ -62,7 +62,7 @@ Python or python3 making_gmm_detections_bgs_pawcs.py # will make sot_files
  
 python making_gmm_detections.py # to make GMM files 
 
-#For yolo files
+### For yolo files
 
 -'git clone https://github.com/pjreddie/darknet.git' will create darknet folder in the home directory.
 	  
@@ -93,13 +93,13 @@ and put them into darknet folder
 
 From DeepSampling folder, run 'python making_yolo_detections_fscore.py' which will save yolo detections in 'yolo_text_files' as text files.
 
-# Combining SOT and GMM
+### Combining SOT and GMM
 
   From DeepSampling directory, run 'python comb_two_bkg_sub_tech.py' after editing paths to net, meta and data folders.
   
   It will combine GMM and SOT in overlap SOT preferential manner, where overlapping blobs with SOT contour information will be classified and saved in 'comb_gmm_sot_overlap_classified' folder.
   
-# Preferential Combination of GMM-SOT with YOLO
+### Preferential Combination of GMM-SOT with YOLO
 
 - # Now we will combine temporal algos (GMM-SOT) with feature dependent YOLO outputs in a preferential manner where YOLO output is preferred in overlapping conditions and non-overlapping detections are taken as it is.
 
