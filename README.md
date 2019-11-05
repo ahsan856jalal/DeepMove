@@ -39,7 +39,8 @@ Run these files to get the final result
 
 overall_gmm_optical_classification.py, opencv_yolo.py and at the end preferential_combination.py to compute results
 
-
+# Video Tutorial for the Repo
+- You can follow videos in the 'Video_tutorial' folder.
 # Steps to reproduce paper results 
 
 1: Clone the directory 
