@@ -85,13 +85,15 @@ fish_classification.data:
 fishclef.data:
 	line5 --> 'names = /home/ahsanjalal/darknet_pj/cfg/fishclef.names' according to your path 
 	
+# Weight files for YOLOv3 and ResNet-50 for fish classification tasks
+
 copy weights from 'https://drive.google.com/open?id=1KvM4-eSDNo5ERrEW6TIeAoNIGxjgPyf6' 
 
 and put them into darknet folder
 
 From DeepSampling folder, run 'python making_yolo_detections_fscore.py' which will save yolo detections in 'yolo_text_files' as text files.
 
-#Combining SOT and GMM#
+# Combining SOT and GMM
 
   From DeepSampling directory, run 'python comb_two_bkg_sub_tech.py' after editing paths to net, meta and data folders.
   
