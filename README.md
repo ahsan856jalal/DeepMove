@@ -17,24 +17,11 @@ To set it , use "setNMixtures(int nmixtures)"
 Similarly, variance threshold for the pixel-model match determines the sensitivity of the model to classify the incoming pixel as foreground or background. We tested this parameter in the range [0.2-0.9]. Increasing the value will make the model less sensitive to small variance. To set this , use "setVarThreshold(double varThreshold)".
 
 
-# Optical Output
-Run "opencv_opencv.py" to save optical frames from the given video.
 
-In this file , you can set different parameters of the Optical flow's algorithm using function "calcOpticalFlowFarneback".
-
-Parameter "pyr_scale" specifying the image scale (<1) to build pyramids for each image; pyr_scale=0.5 means a classical pyramid, where each next layer is twice smaller than the previous one. 
-
-Parameter "levels" 	specifies the number of pyramid layers including the initial image; levels=1 means that no extra layers are created and only the original images are used. We tested this in the range [1-10].
-
-Parameter "winSize" represents averaging window size; larger values increase the algorithm robustness to image noise and give more chances for fast motion detection, but yield more blurred motion field. We tried this in the range [3-21].
-
-Paramter "iterations" 	represents the number of iterations the algorithm does at each pyramid level. We tested this parameter in the range [1-5] as it is computational expensive.
-
-Paramter "poly_n" represents the size of the pixel neighborhood used to find polynomial expansion in each pixel; larger values mean that the image will be approximated with smoother surfaces, yielding more robust algorithm and more blurred motion field, typically poly_n =5 or 7. 
 # YOLO Output
 After installing yolo from the above mentioned link, make the package and put .cfg,.data,.names and .weights files in the yolo folder and also modify the paths in the net and meta variables of opencv_yolo.py
 Run " opencv_yolo.py" to save YOLO detections on the provided video
-# Combining Optical and GMM instances
+# Combining SOT and GMM instances
 edit the net and meta variable paths before running the file
 Run " comb_gmm_optical_images.py" to combing gmm and optical flow instances and do fish detection and classification on all frames
 # Preferential Combination
@@ -51,3 +38,44 @@ opencv_gmm.py, opencv_optical.py, opencv_yolo.py, comb_gmm_optical_images.py, pr
 Run these files to get the final result
 
 overall_gmm_optical_classification.py, opencv_yolo.py and at the end preferential_combination.py to compute results
+
+
+#####  Steps to reproduce paper Results ########
+
+1: Clone the directory 
+In the main directory, call 
+	* python create_annotated_data.py  # to make GT frames and annotations from videos and XML files
+	* git clone https://github.com/andrewssobral/bgslibrary.git
+	  cd bgslibrary
+	  pip3 or pip install pybgs
+	  copy making_gmm_detections_bgs_pawcs.py from DeepSampling repo to bgslibrary repo
+	  python or python3 making_gmm_detections_bgs_pawcs.py # will make sot_files
+	* In the Deepsampling folder:
+	  python making_gmm_detections.py # to make GMM files
+	* for yolo files
+	  -'git clone https://github.com/pjreddie/darknet.git' will create darknet folder in the home directory.
+	  - goto darknet folder, and edit the Makefile :
+	  	first 5 lines are :
+	  		GPU=1
+			CUDNN=1
+			OPENCV=1
+			OPENMP=1
+			DEBUG=0
+	  - then run 'make -j4 ('4' for quadcore processor otherwise simple make command)' in the darknet folder so that it can make darknet.so file.
+
+	  -copy files from '~/DeepSampling->yolo_files' folder into darknet folder and edit the paths in .data files
+	  		fish_classification.data:
+	  			line4 --> 'labels = /home/ahsanjalal/darknet_pj/cfg/fishclef.list' according to your path
+	  		fishclef.data:
+	  			line5 --> 'names = /home/ahsanjalal/darknet_pj/cfg/fishclef.names' according to your path 
+
+	  - copy weights from 'https://drive.google.com/open?id=1KvM4-eSDNo5ERrEW6TIeAoNIGxjgPyf6' and put them into darknet folder
+	  - from DeepSampling folder, run 'python making_yolo_detections_fscore.py' which will save yolo detections in 'yolo_text_files' as text files.
+
+	  # Combining SOT and GMM
+	  - From DeepSampling directory, run 'python comb_two_bkg_sub_tech.py' after editing paths to net, meta and data folders.
+	  It will combine GMM and SOT in overlap SOT preferential manner, where overlapping blobs with SOT contour information will be classified and saved in 'comb_gmm_sot_overlap_classified' folder.
+	  # Preferential Combination of GMM-SOT with YOLO
+	  - # Now we will combine temporal algos (GMM-SOT) with feature dependent YOLO outputs in a preferential manner where YOLO output is preferred in overlapping conditions and non-overlapping detections are taken as it is.
+	   Run ' python preferential_combination.py' to get the F-score of DeepSampling classification as given in the paper
+	   
