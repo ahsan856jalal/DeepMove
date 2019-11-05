@@ -30,7 +30,7 @@ At the end, a demo will run which will show you original frames vs the processed
 # Visualize the results
 Run " show_images.py" by specifying the input folder to see all annotated data from the respective algorithm
 
-# Step by Step Results #
+### Step by Step Results 
 Run files in the following sequence
 opencv_gmm.py, opencv_optical.py, opencv_yolo.py, comb_gmm_optical_images.py, preferential_combination.py
 
@@ -101,7 +101,7 @@ From DeepSampling folder, run 'python making_yolo_detections_fscore.py' which wi
   
 ### Preferential Combination of GMM-SOT with YOLO
 
-- # Now we will combine temporal algos (GMM-SOT) with feature dependent YOLO outputs in a preferential manner where YOLO output is preferred in overlapping conditions and non-overlapping detections are taken as it is.
+ Now we will combine temporal algos (GMM-SOT) with feature dependent YOLO outputs in a preferential manner where YOLO output is preferred in overlapping conditions and non-overlapping detections are taken as it is.
 
 Run ' python preferential_combination.py' to get the F-score of DeepSampling classification as given in the paper
 	   
