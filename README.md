@@ -57,7 +57,7 @@ git clone https://github.com/andrewssobral/bgslibrary.git
  
   copy making_gmm_detections_bgs_pawcs.py from DeepSampling repo to bgslibrary repo
   
-Python or python3 making_gmm_detections_bgs_pawcs.py # will make sot_files
+Python or python3 sot.py # will make sot_files
 
  In the Deepsampling folder:
  
