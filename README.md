@@ -106,3 +106,4 @@ From DeepSampling folder, run 'python making_yolo_detections_fscore.py' which wi
 
 Run ' python preferential_combination.py' to get the F-score of DeepSampling classification as given in the paper
 	   
+# For Demo , see readme file in demo folder
